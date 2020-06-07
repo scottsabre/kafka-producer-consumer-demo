@@ -28,6 +28,9 @@ To run:
 - Run ProducerTest as JUnit
 - Check demoTopic for new entry.
 
+Kafka Consumer Listener
+~~~~~~ coming soon! ~~~~~~~
+
 Kafka Server Setup for Windows (using PowerShell)
 - Extract kafka to local drive (I used 7-zip to extract to C:/)
 - Open PowerShell in bin/windows folder
