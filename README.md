@@ -29,7 +29,7 @@ To run:
 - Check demoTopic for new entry.
 
 Kafka Consumer Listener
-~~~~~~ coming soon! ~~~~~~~
+ coming soon! 
 
 Kafka Server Setup for Windows (using PowerShell)
 - Extract kafka to local drive (I used 7-zip to extract to C:/)
