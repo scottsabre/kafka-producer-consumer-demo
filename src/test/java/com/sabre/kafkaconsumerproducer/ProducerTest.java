@@ -40,7 +40,7 @@ public class ProducerTest {
 	@Test
 	public void testKafkaAdminConfig() {
 		//Not a true test -- check topic and server in application.properties for results!
-		publishService.publishMessage(createDemoModelForTest());
+		//TODO: uncomment this line to run demo-> publishService.publishMessage(createDemoModelForTest());
 	}
 	
 	private Demo createDemoModelForTest() {
