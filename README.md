@@ -3,19 +3,19 @@
 This example demonstrates how to create a simple Kafka producer template and Kafka consumer listener.  
 
 
-Some things you'll need (or might want)
+### Some things you'll need (or might want)
 - 7-Zip
 - Development IDE (I use STS)
 - A kafka tool, like kafkatool https://www.kafkatool.com/download.html
 - Stable version of Kafka from here: https://kafka.apache.org/downloads
 
-Kafka Producer 
+### Kafka Producer 
 - For this demo, I started with SpringInitializr and added a test POJO model called 'Demo', then
-- Created a kafka producer config and template bean: See @KafkaProducerConfig
-- Created a publisher service:  See @PublishServiceImpl
+- Created a kafka producer config and template bean: See KafkaProducerConfig.java
+- Created a publisher service:  See PublishServiceImpl.java
 - Created a test class that populates a Demo payload and publishes the payload to the demo topic. 
 
-To run:
+#### To run:
 - Follow steps for 'Kafka Server Setup for Windows', below.
 - Create a topic using KafkaTool (or command line)
 - Set the demoTopic property in application.properties to the topic name.  
@@ -28,7 +28,10 @@ To run:
 - Run ProducerTest as JUnit
 - Check demoTopic for new entry.
 
-Kafka Server Setup for Windows (using PowerShell)
+### Kafka Consumer Listener
+ coming soon! 
+
+### Kafka Server Setup for Windows (using PowerShell)
 - Extract kafka to local drive (I used 7-zip to extract to C:/)
 - Open PowerShell in bin/windows folder
 - Start ZooKeeper:  .\zookeeper-server-start.bat ../../config/zookeeper.properties
