@@ -44,7 +44,7 @@ This example demonstrates how to create a simple Kafka producer template and Kaf
 - Start Kafka: .\kafka-server-start.bat ../../config/server.properties
 - Check for the started log message in the console: INFO [KafkaServer id=0] started (kafka.server.KafkaServer)
 
-#### Try it out!:
+### Try it out!:
 - Follow steps for 'Kafka Server Setup for Windows', above.
 - Create a topic using KafkaTool (or command line)
 - Set the demoTopic property in application.properties to the topic name.  
