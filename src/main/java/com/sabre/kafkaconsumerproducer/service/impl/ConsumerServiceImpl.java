@@ -7,28 +7,32 @@
  * author assumes no liability for damages resulting from use. The user shall shall use this software only
  * in accordance with these terms.
  */
-
 package com.sabre.kafkaconsumerproducer.service.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.sabre.kafkaconsumerproducer.model.Demo;
-import com.sabre.kafkaconsumerproducer.service.PublishService;
+import com.sabre.kafkaconsumerproducer.service.ConsumerService;
 
 @Service
-public class PublishServiceImpl implements PublishService{
+public class ConsumerServiceImpl implements ConsumerService{
 	
-	@Value(value = "${kafka.demoTopic}")
-	String demoTopic;
-	
-	@Autowired
-	private KafkaTemplate<String, Demo> kafkaTemplate;
-	 
-	public void publishMessage(Demo demo) {
-		kafkaTemplate.send(demoTopic, demo);
+	@KafkaListener(topics = "${kafka.demoTopic}", groupId = "${kafka.demoConsumerGroupId}")
+	public Demo consumeDemoMessage(Demo consumedDemo) {
+	    prettyPrint(consumedDemo);
+	   
+	    return consumedDemo;
 	}
-
+	
+	private static void prettyPrint(Demo demo) {
+		
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+		System.err.println("Payload Consumed:");
+		System.err.println(gson.toJson(demo));
+	}
+		
+	
 }

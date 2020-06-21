@@ -16,6 +16,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class KafkaConsumerProducerApplicationTests {
 
+	/**
+	 * <pre>
+	 * Future:  Implement component test where producer publishes message to topic 
+	 * and consumer processes.  Assert data between publish and consume.
+	 * </pre>
+	 */
 	@Test
 	void contextLoads() {
 	}

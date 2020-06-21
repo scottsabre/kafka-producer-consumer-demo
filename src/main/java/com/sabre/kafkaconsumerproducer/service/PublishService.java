@@ -14,6 +14,10 @@ import com.sabre.kafkaconsumerproducer.model.Demo;
 
 public interface PublishService {
 	
+	/**
+	 * Publishes Demo object to topic named in configuration
+	 * @param demo
+	 */
 	public void publishMessage(Demo demo);
 
 }

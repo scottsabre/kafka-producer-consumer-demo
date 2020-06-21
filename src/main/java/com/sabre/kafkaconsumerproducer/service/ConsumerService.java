@@ -7,28 +7,21 @@
  * author assumes no liability for damages resulting from use. The user shall shall use this software only
  * in accordance with these terms.
  */
+package com.sabre.kafkaconsumerproducer.service;
 
-package com.sabre.kafkaconsumerproducer.service.impl;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 import com.sabre.kafkaconsumerproducer.model.Demo;
-import com.sabre.kafkaconsumerproducer.service.PublishService;
+
 
 @Service
-public class PublishServiceImpl implements PublishService{
+public interface ConsumerService {
 	
-	@Value(value = "${kafka.demoTopic}")
-	String demoTopic;
-	
-	@Autowired
-	private KafkaTemplate<String, Demo> kafkaTemplate;
-	 
-	public void publishMessage(Demo demo) {
-		kafkaTemplate.send(demoTopic, demo);
-	}
+	/**
+	 * Consumes from the configured topic with configured Group ID.  
+	 * @param demo
+	 * @return 
+	 */
+	public Demo consumeDemoMessage(Demo demo);
 
 }
