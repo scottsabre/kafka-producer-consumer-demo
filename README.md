@@ -10,17 +10,22 @@ This example demonstrates how to create a simple Kafka producer template and Kaf
 - A kafka tool, like kafkatool https://www.kafkatool.com/download.html
 - Stable version of Kafka from here: https://kafka.apache.org/downloads
 
-### Kafka Producer 
+### Kafka Producer - Publish a message to a Kafka topic
 - For this demo, I started with SpringInitializr and added a test POJO model called 'Demo', then
 - Created a kafka producer config and template bean: See KafkaDemoConfig.java
 - Created a publisher service:  See PublishServiceImpl.java
 - Created a test class that populates a Demo payload and publishes the payload to the demo topic. 
+- Add/update kafka properties in application.properties: 
+```xml
+    kafka.bootstrapServer= localhost:9092
+    kafka.demoTopic= demoTopic
+```
 
-### Test Controller
+### Test Controller - API that invokes Producer with JSON payload
 - Add spring-boot-starter-web dependency.  See pom.xml
 - Add new controller with injected Kafka Publisher.  The API takes our Demo object as parameter and invokes the publisher's publishMessage method.  See DemoController.java
 
-### Kafka Consumer Listener
+### Kafka Consumer Listener - Consumer that listens on a topic and consumes new messages for its group ID
 - Starting with the Producer implementation
 - Add new configuration Beans to KafkaDemoConfig.java
 ```java
@@ -30,6 +35,7 @@ This example demonstrates how to create a simple Kafka producer template and Kaf
     public ConcurrentKafkaListenerContainerFactory<String, Demo>  kafkaListenerContainerFactory()
 ```
 - Create ConsumerServiceImpl.java with KafkaListener annotation.  
+- Add a group ID to application.properties (kafka.demoConsumerGroupId)
 
 ### Kafka Server Setup for Windows (using PowerShell)
 - Extract kafka to local drive (I used 7-zip to extract to C:/)
@@ -67,6 +73,6 @@ This example demonstrates how to create a simple Kafka producer template and Kaf
   "status": "PENDING"
 }
 ```
-- Check demoTopic for new entry.
-- See console for consumed message
+- Using kafkatool, observe that the topic with name configured by kafka.demoTopic has a new entry.
+- Observe that the consumer service printed the consumed message to the console.
 
